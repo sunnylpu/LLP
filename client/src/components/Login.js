@@ -47,7 +47,6 @@ const Login = ({ isLogin = true }) => {
         existingScript.parentNode.removeChild(existingScript);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleGoogleSignIn = async (response) => {
