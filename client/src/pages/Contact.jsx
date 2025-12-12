@@ -73,12 +73,21 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      await submitContactForm(formData);
+      const response = await submitContactForm({
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        category: formData.category || '',
+        message: formData.message
+      });
+      
+      // Show success message from backend or default
       setSubmitMessage({
         type: 'success',
-        text: 'Thank you! Your message has been sent successfully. We will get back to you soon.'
+        text: response?.message || 'Message sent successfully!'
       });
-      // Reset form
+      
+      // Reset form after successful submission
       setFormData({
         name: '',
         email: '',
@@ -87,6 +96,7 @@ const Contact = () => {
         message: ''
       });
     } catch (error) {
+      // Show error message from backend or default
       setSubmitMessage({
         type: 'error',
         text: error.response?.data?.message || 'Failed to send message. Please try again later.'
@@ -368,7 +378,7 @@ const Contact = () => {
             <h2 className="map-title">Find Us</h2>
             <div className="map-wrapper">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.01374262742!2d77.59456631482177!3d12.97159899085673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d6821.540067988189!2d75.69942184378513!3d31.254788869117043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sLovely%20Professional%20University!5e0!3m2!1sen!2sin!4v1765564614118!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0, borderRadius: '16px' }}
