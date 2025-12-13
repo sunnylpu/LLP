@@ -282,7 +282,7 @@ const Contact = () => {
                     <div className="contact-info-icon">📍</div>
                     <div className="contact-info-content">
                       <h3>Location</h3>
-                      <p>Bengaluru, India</p>
+                      <p>Punjab, India</p>
                     </div>
                   </div>
 
