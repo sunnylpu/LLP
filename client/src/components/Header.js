@@ -42,7 +42,7 @@ const Header = () => {
         </Link>
         <nav className="nav">
           <Link to="/" className="nav-link">Courses</Link>
-          <Link to="/" className="nav-link">About Us</Link>
+          <Link to="/about" className="nav-link">About Us</Link>
           <Link to="/contact" className="nav-link">Contact</Link>
           {token ? (
             <Link to="/dashboard" className="nav-link">Dashboard</Link>
