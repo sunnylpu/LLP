@@ -136,10 +136,15 @@ const Login = ({ isLogin = true }) => {
     try {
       if (isLogin) {
         await login({ email: formData.email, password: formData.password });
+        navigate('/dashboard');
       } else {
-        await register(formData);
+        // Registration - redirect to OTP verification
+        const response = await register(formData);
+        // Store email for OTP verification
+        localStorage.setItem('pendingVerificationEmail', formData.email);
+        // Redirect to OTP verification page
+        navigate('/verify-otp', { state: { email: formData.email } });
       }
-      navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong');
     } finally {

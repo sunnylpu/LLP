@@ -22,9 +22,7 @@ api.interceptors.request.use((config) => {
 // Auth API
 export const register = async (userData) => {
   const response = await api.post('/auth/register', userData);
-  if (response.data.token) {
-    localStorage.setItem('token', response.data.token);
-  }
+  // OTP verification - no token returned, user needs to verify first
   return response.data;
 };
 
@@ -46,6 +44,20 @@ export const loginWithGoogle = async (tokenId, userInfo = null) => {
   if (response.data.token) {
     localStorage.setItem('token', response.data.token);
   }
+  return response.data;
+};
+
+// OTP Verification API
+export const verifyOTP = async (email, otp) => {
+  const response = await api.post('/auth/verify-otp', { email, otp });
+  if (response.data.token) {
+    localStorage.setItem('token', response.data.token);
+  }
+  return response.data;
+};
+
+export const resendOTP = async (email) => {
+  const response = await api.post('/auth/resend-otp', { email });
   return response.data;
 };
 

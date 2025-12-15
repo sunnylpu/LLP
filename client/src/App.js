@@ -11,6 +11,7 @@ import LanguageSelector from './components/LanguageSelector';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import CoursesPage from './pages/CoursesPage';
+import VerifyOTPPage from './pages/VerifyOTPPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/verify-otp" element={<VerifyOTPPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/vocabulary" element={<VocabularyPage />} />
         <Route path="/listening" element={<LanguageSelector />} />
