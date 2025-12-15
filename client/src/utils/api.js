@@ -81,6 +81,22 @@ export const getLesson = async (id) => {
   return response.data;
 };
 
+// Listening Lessons API
+export const getListeningLessons = async () => {
+  const response = await api.get('/listening');
+  return response.data;
+};
+
+export const getListeningLesson = async (id) => {
+  const response = await api.get(`/listening/${id}`);
+  return response.data;
+};
+
+export const textToSpeech = async (text, languageCode = 'en-US') => {
+  const response = await api.post('/tts', { text, languageCode });
+  return response.data; // expected to contain base64 mp3
+};
+
 // Vocabulary API
 export const getVocabulary = async (filters = {}) => {
   const params = new URLSearchParams(filters);
@@ -122,6 +138,11 @@ export const createVocabularyBulk = async (words, language = 'French') => {
 export const parseSentence = async (sentence, language = 'French') => {
   const response = await api.post('/vocabulary/parse-sentence', { sentence, language });
   return response.data;
+};
+
+export const translateWord = async (word, sourceLang, targetLang) => {
+  const response = await api.post('/translate', { word, sourceLang, targetLang });
+  return response.data.translatedText;
 };
 
 export const updateVocabulary = async (id, updates) => {

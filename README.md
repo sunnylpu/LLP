@@ -7,6 +7,7 @@ A full-stack language learning platform built with MongoDB, Express, React, and 
 - User authentication (Register/Login)
 - Course management
 - Interactive lessons with audio support
+- Text-to-Speech with clickable word translations (LibreTranslate via backend proxy)
 - Vocabulary learning with progress tracking
 - User dashboard with progress analytics
 - Modern, responsive UI
@@ -143,6 +144,9 @@ The frontend will run on `http://localhost:3000`
 - `POST /api/vocabulary` - Create vocabulary word (Protected)
 - `PUT /api/vocabulary/:id` - Update vocabulary word (Protected)
 
+### Translation
+- `POST /api/translate` - Proxy to LibreTranslate (body: `{ word, sourceLang, targetLang }`)
+
 ## Usage
 
 1. Start MongoDB (if using local MongoDB):
@@ -181,6 +185,7 @@ npm start
 - Update the JWT_SECRET in production
 - Configure CORS settings for production deployment
 - The application uses JWT tokens stored in localStorage for authentication
+- Translation uses LibreTranslate through the backend proxy (`/api/translate`) to avoid browser CORS issues; ensure the backend can reach https://libretranslate.de
 
 ## License
 

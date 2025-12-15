@@ -33,6 +33,7 @@ const userSchema = new mongoose.Schema({
     enum: ['local', 'google'],
     default: 'local',
   },
+<<<<<<< HEAD
 
   lastScore: {
     type: Number,
@@ -60,6 +61,13 @@ const userSchema = new mongoose.Schema({
     default:null
   },
 
+
+
+  role: {
+    type: String,
+    enum: ['user', 'admin'],
+    default: 'user',
+  },
 
   enrolledCourses: [{
     type: mongoose.Schema.Types.ObjectId,

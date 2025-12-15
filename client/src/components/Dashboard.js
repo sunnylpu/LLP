@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { getCurrentUser, getCourses } from '../utils/api';
 import './Dashboard.css';
 
-
 const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [courses, setCourses] = useState([]);
@@ -32,12 +31,14 @@ const Dashboard = () => {
     return <div className="loading">Loading...</div>;
   }
 
-  const fluency = user?.progress?.get('French')?.fluency || 0;
+  const fluency = user?.progress?.get?.('French')?.fluency || 0;
   const practiceTime = user?.practiceTime || 0;
 
   return (
     <div className="dashboard">
       <div className="dashboard-container">
+
+        {/* Welcome Section */}
         <div className="welcome-section">
           <h1 className="welcome-title">
             Welcome, {user?.name || 'User'} 👋
@@ -51,34 +52,52 @@ const Dashboard = () => {
           </button>
         </div>
 
+        {/* Feature Cards */}
         <div className="dashboard-section">
           <h2 className="section-title">Your Learning Dashboard</h2>
+
           <div className="feature-cards">
-            <Link to={"/dashboard/speaking"}>
-            <div className="feature-card">
+
+            <Link
+              to="/dashboard/speaking"
+              className="feature-card"
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
               <div className="feature-icon">📢</div>
               <h3>Speaking Practice</h3>
               <p>Daily goal: 5/10 mins</p>
-            </div>
             </Link>
-            <div className="feature-card">
+
+            <Link
+              to="/listening"
+              className="feature-card"
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
               <div className="feature-icon">🎧</div>
               <h3>Listening Practice</h3>
               <p>New audio drills available</p>
-            </div>
-            <Link to="/vocabulary" className="feature-card" style={{ textDecoration: 'none', color: 'inherit' }}>
+            </Link>
+
+            <Link
+              to="/vocabulary"
+              className="feature-card"
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
               <div className="feature-icon">📚</div>
               <h3>Vocabulary</h3>
               <p>Build your vocabulary list</p>
             </Link>
+
             <div className="feature-card">
               <div className="feature-icon">📊</div>
               <h3>Your Progress</h3>
               <p>Overall fluency: {fluency}%</p>
             </div>
+
           </div>
         </div>
 
+        {/* Activity Section */}
         <div className="activity-section">
           <div className="activity-card">
             <div className="progress-circle">
@@ -96,6 +115,7 @@ const Dashboard = () => {
           </div>
         </div>
 
+        {/* Courses Section */}
         <div className="courses-section">
           <h2 className="section-title">Available Courses</h2>
           <div className="courses-grid">
@@ -109,10 +129,10 @@ const Dashboard = () => {
             ))}
           </div>
         </div>
+
       </div>
     </div>
   );
 };
 
 export default Dashboard;
-
