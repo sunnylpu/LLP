@@ -104,7 +104,7 @@ router.post('/register', async (req, res) => {
       if (!userExists.isVerified) {
         const otp = generateOTP();
         userExists.otp = otp;
-        userExists.otpExpiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
+        userExists.otpExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
         await userExists.save();
         
         try {
@@ -114,6 +114,7 @@ router.post('/register', async (req, res) => {
             email: userExists.email,
           });
         } catch (emailError) {
+          console.error('Failed to send OTP email:', emailError);
           return res.status(500).json({ 
             message: 'Failed to send OTP email. Please try again later.' 
           });
@@ -124,7 +125,7 @@ router.post('/register', async (req, res) => {
 
     // Generate OTP
     const otp = generateOTP();
-    const otpExpiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes from now
+    const otpExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes from now
 
     const user = await User.create({
       name,
@@ -132,27 +133,27 @@ router.post('/register', async (req, res) => {
       password,
       isVerified: false,
       otp,
-      otpExpiresAt,
+      otpExpires,
     });
 
-    if (user) {
-      // Send OTP email
-      try {
-        await sendOTPEmail(user.email, user.name, otp);
-        res.status(201).json({
-          message: 'OTP sent to your email',
-          email: user.email,
-        });
-      } catch (emailError) {
-        // If email fails, still return success but log error
-        console.error('Failed to send OTP email:', emailError);
-        res.status(201).json({
-          message: 'Account created but failed to send OTP email. Please contact support.',
-          email: user.email,
-        });
-      }
-    } else {
-      res.status(400).json({ message: 'Invalid user data' });
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid user data' });
+    }
+
+    // Send OTP email; if this fails, registration should also fail
+    try {
+      await sendOTPEmail(user.email, user.name, otp);
+      return res.status(201).json({
+        message: 'OTP sent to your email',
+        email: user.email,
+      });
+    } catch (emailError) {
+      console.error('Failed to send OTP email:', emailError);
+      // Roll back user creation so no inactive/undeliverable account is left behind
+      await User.findByIdAndDelete(user._id);
+      return res.status(500).json({ 
+        message: 'Registration failed: could not send verification email. Please try again later.' 
+      });
     }
   } catch (error) {
     console.error('Registration error:', error);
@@ -186,23 +187,27 @@ router.post('/login', async (req, res) => {
 
     const user = await User.findOne({ email });
 
-    if (user && (await user.matchPassword(password))) {
-      // Check if email is verified (only for local auth, Google users are auto-verified)
-      if (user.authProvider === 'local' && !user.isVerified) {
-        return res.status(403).json({ 
-          message: 'Please verify your email first. Check your inbox for the verification code.' 
-        });
-      }
+    if (!user) {
+      return res.status(401).json({ message: 'Invalid email or password' });
+    }
 
-      res.json({
+    // Block unverified local users before checking password
+    if (user.authProvider === 'local' && !user.isVerified) {
+      return res.status(403).json({ 
+        message: 'Please verify your email first' 
+      });
+    }
+
+    if (user.password && (await user.matchPassword(password))) {
+      return res.json({
         _id: user._id,
         name: user.name,
         email: user.email,
         token: generateToken(user._id),
       });
-    } else {
-      res.status(401).json({ message: 'Invalid email or password' });
     }
+
+    return res.status(401).json({ message: 'Invalid email or password' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -332,7 +337,7 @@ router.post('/verify-otp', async (req, res) => {
     }
 
     // Check if OTP is expired
-    if (user.otpExpiresAt && new Date() > user.otpExpiresAt) {
+    if (user.otpExpires && new Date() > user.otpExpires) {
       return res.status(400).json({ 
         message: 'OTP has expired. Please request a new OTP.' 
       });
@@ -341,7 +346,7 @@ router.post('/verify-otp', async (req, res) => {
     // Verify user
     user.isVerified = true;
     user.otp = null;
-    user.otpExpiresAt = null;
+    user.otpExpires = null;
     await user.save();
 
     // Generate and return token
@@ -389,7 +394,7 @@ router.post('/resend-otp', async (req, res) => {
     // Generate new OTP
     const otp = generateOTP();
     user.otp = otp;
-    user.otpExpiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
+    user.otpExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
     await user.save();
 
     // Send OTP email

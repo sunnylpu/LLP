@@ -62,7 +62,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
-  otpExpiresAt: {
+  otpExpires: {
     type: Date,
     default: null,
   },
