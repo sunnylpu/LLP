@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; // Ensure React is used in JSX
 import { Link } from 'react-router-dom';
 import { getCurrentUser, getCourses, getProgress } from '../utils/api';
 import './Dashboard.css';
@@ -35,7 +35,7 @@ const Dashboard = () => {
       } finally {
         setLoading(false);
       }
-    };
+    }; // Ensure this is correctly placed after the component's return statement
 
     fetchData();
   }, []);
@@ -44,12 +44,12 @@ const Dashboard = () => {
     return <div className="loading">Loading...</div>;
   }
 
-<<<<<<< HEAD
-  const fluency = user?.progress?.get?.('French')?.fluency || 0;
-=======
+
+  const fluencyFromUser = user?.progress?.get?.('French')?.fluency || 0;
+
   // Get fluency from progress data or fallback to user progress
-  const fluency = progress?.progressPercentage || user?.progress?.get('French')?.fluency || 0;
->>>>>>> your_progress
+  const fluency = progress?.progressPercentage || fluencyFromUser || 0;
+
   const practiceTime = user?.practiceTime || 0;
   const learnedWords = progress?.learnedWords || 0;
   const totalWords = progress?.totalWords || 0;
@@ -107,13 +107,14 @@ const Dashboard = () => {
               <h3>Vocabulary</h3>
               <p>Build your vocabulary list</p>
             </Link>
-<<<<<<< HEAD
+
 
             <div className="feature-card">
               <div className="feature-icon">📊</div>
               <h3>Your Progress</h3>
               <p>Overall fluency: {fluency}%</p>
-=======
+            </div>  // Closing the div properly
+
             <div 
               className={`feature-card progress-card ${isProgressExpanded ? 'expanded' : ''}`}
               onClick={() => setIsProgressExpanded(!isProgressExpanded)}
@@ -225,17 +226,17 @@ const Dashboard = () => {
                   <p>Loading progress...</p>
                 </div>
               )}
->>>>>>> your_progress
+
             </div>
 
           </div>
         </div>
 
-<<<<<<< HEAD
-        {/* Activity Section */}
-=======
 
->>>>>>> your_progress
+        {/* Activity Section */}
+
+
+
         <div className="activity-section">
           <div className="activity-card">
             <div className="progress-circle">
@@ -326,4 +327,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Dashboard; // Ensure this is correctly placed after the component's return statement

@@ -47,10 +47,8 @@ const Login = ({ isLogin = true }) => {
         existingScript.parentNode.removeChild(existingScript);
       }
     };
-<<<<<<< HEAD
 
-=======
->>>>>>> your_progress
+
   }, []);
 
   const handleGoogleSignIn = async (response) => {

@@ -175,11 +175,12 @@ export const getVocabularyStats = async (language, userId) => {
   return response.data;
 };
 
-<<<<<<< HEAD
+
 // Contact API
 export const submitContactForm = async (contactData) => {
   const response = await api.post('/contact', contactData);
-=======
+}; // Added closing brace
+
 // Progress API
 export const getProgress = async (language, userId) => {
   const params = new URLSearchParams();
@@ -211,7 +212,7 @@ export const getProgressSummary = async (language, userId) => {
   if (language) params.append('language', language);
   if (userId) params.append('userId', userId);
   const response = await api.get(`/progress/stats/summary?${params}`);
->>>>>>> your_progress
+
   return response.data;
 };
 

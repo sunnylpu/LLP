@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
     enum: ['local', 'google'],
     default: 'local',
   },
-<<<<<<< HEAD
+
 
   lastScore: {
     type: Number,
