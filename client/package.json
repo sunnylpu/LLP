@@ -2,6 +2,12 @@
   "name": "language-learning-platform-frontend",
   "version": "1.0.0",
   "description": "Frontend for Language Learning Platform",
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -25,7 +31,6 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "eslint-plugin-react-hooks": "^7.0.1",
     "react-scripts": "5.0.1"
   },
   "browserslist": {
