@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getCurrentUser, getCourses } from '../utils/api';
 import './Dashboard.css';
-import { Link } from 'react-router-dom';
+
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);

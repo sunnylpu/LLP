@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     minlength: 6,
   },
-<<<<<<< HEAD
+
   googleId: {
     type: String,
     unique: true,
@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
     enum: ['local', 'google'],
     default: 'local',
   },
-=======
+
   lastScore: {
     type: Number,
     default:0
@@ -60,7 +60,7 @@ const userSchema = new mongoose.Schema({
     default:null
   },
 
->>>>>>> temp-changes
+
   enrolledCourses: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Course',
