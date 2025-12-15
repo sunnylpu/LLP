@@ -15,7 +15,8 @@
     "react-dom": "^18.2.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^6.16.0",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "redux": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
