@@ -18,7 +18,7 @@ const Footer = () => {
           <a href="/" className="social-icon">📷</a>
         </div>
         <div className="footer-copyright">
-          © 2024 Vocal Language Learning. All rights reserved.
+          © 2025 Vocal Language Learning. All rights reserved.
         </div>
       </div>
     </footer>

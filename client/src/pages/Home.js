@@ -1,9 +1,11 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div className="home-page">
       <Header />
@@ -13,7 +15,7 @@ const Home = () => {
             <div className="hero-content">
               <h1 className="hero-title">Language Learning Courses</h1>
               <p className="hero-subtitle">Explore the World Through Language</p>
-              <button className="btn-register">Register Now</button>
+              <button className="btn-register" onClick={() => navigate('/signup')}>Register Now</button>
             </div>
             <div className="hero-image">
               <div className="image-placeholder">

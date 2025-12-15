@@ -175,5 +175,11 @@ export const getVocabularyStats = async (language, userId) => {
   return response.data;
 };
 
+// Contact API
+export const submitContactForm = async (contactData) => {
+  const response = await api.post('/contact', contactData);
+  return response.data;
+};
+
 export default api;
 

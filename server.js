@@ -28,6 +28,7 @@ app.use('/api/save',require('./utils/scoreDB'));
 
 app.use('/api/listening', require('./routes/listening'));
 app.use('/api/translate', require('./routes/translate'));
+app.use('/api/contact', require('./routes/contact'));
 
 
 // Health check
