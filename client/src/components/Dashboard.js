@@ -87,9 +87,14 @@ const Dashboard = () => {
 
         <div className="activity-section">
           <div className="activity-card">
-            <div className="progress-circle">
-              <div className="progress-value">{fluency}%</div>
-              <div className="progress-label">Fluency</div>
+            <div 
+              className="progress-circle" 
+              style={{ '--progress': `${fluency}%` }}
+            >
+              <div className="progress-content">
+                <div className="progress-value">{fluency}%</div>
+                <div className="progress-label">Fluency</div>
+              </div>
             </div>
             <div className="activity-content">
               <h3>Weekly Activity</h3>
