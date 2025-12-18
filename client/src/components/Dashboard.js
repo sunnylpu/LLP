@@ -108,12 +108,12 @@ const Dashboard = () => {
               <p>Build your vocabulary list</p>
             </Link>
 
-
+{/* 
             <div className="feature-card">
               <div className="feature-icon">📊</div>
               <h3>Your Progress</h3>
               <p>Overall fluency: {fluency}%</p>
-            </div>  // Closing the div properly
+            </div>  */}
 
             <div 
               className={`feature-card progress-card ${isProgressExpanded ? 'expanded' : ''}`}
