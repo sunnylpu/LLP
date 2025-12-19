@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './LessonCard.css';
 
-const LessonCard = ({ lesson, progress, listeningLanguage, isPlaying, onPlay, onComplete }) => {
+const LessonCard = ({ lesson, progress, listeningLanguage, isPlaying, onPlay, onComplete, showDetailsLink = true }) => {
   const audioRef = useRef(null);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
@@ -159,12 +159,14 @@ const LessonCard = ({ lesson, progress, listeningLanguage, isPlaying, onPlay, on
       )}
 
       {/* View Details Link */}
-      <Link
-        to={`/listening-practice/${lesson._id}`}
-        className="view-details-link"
-      >
-        View Full Lesson →
-      </Link>
+      {showDetailsLink && (
+        <Link
+          to={`/listening-practice/${lesson._id}`}
+          className="view-details-link"
+        >
+          View Full Lesson →
+        </Link>
+      )}
     </div>
   );
 };

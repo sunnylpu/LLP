@@ -16,11 +16,15 @@ const languages = [
   { label: 'Russian', code: 'ru-RU', flag: '🇷🇺' },
 ];
 
-const LanguageSelector = () => {
+const LanguageSelector = ({ onSelect }) => {
   const navigate = useNavigate();
 
   const handleSelect = (code) => {
-    navigate(`/listening-practice?lang=${encodeURIComponent(code)}`);
+    if (onSelect) {
+      onSelect(code);
+    } else {
+      navigate(`/listening-practice?lang=${encodeURIComponent(code)}`);
+    }
   };
 
   return (

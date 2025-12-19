@@ -5,6 +5,7 @@ import { getListeningLessons, getCurrentUser } from '../utils/api';
 import GuidedLessonsPanel from '../components/listening/GuidedLessonsPanel';
 import TTSPracticePanel from '../components/listening/TTSPracticePanel';
 import DailyStatsStrip from '../components/listening/DailyStatsStrip';
+import LanguageSelector from '../components/LanguageSelector';
 import './ListeningHub.css';
 
 const languages = [
@@ -33,6 +34,7 @@ const ListeningHub = () => {
   
   // Mode: 'guided' or 'practice'
   const [activeMode, setActiveMode] = useState('guided');
+  const [showLangModal, setShowLangModal] = useState(false);
   
   // Daily stats
   const [dailyStats, setDailyStats] = useState({
@@ -109,17 +111,32 @@ const ListeningHub = () => {
                 <span className="label-icon">📝</span>
                 Text Language
               </label>
-              <select
-                className="language-select"
-                value={textLanguage}
-                onChange={(e) => setTextLanguage(e.target.value)}
-              >
-                {languages.map((lang) => (
-                  <option key={lang.code} value={lang.code}>
-                    {lang.flag} {lang.label}
-                  </option>
-                ))}
-              </select>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                 <select
+                  className="language-select"
+                  value={textLanguage}
+                  onChange={(e) => setTextLanguage(e.target.value)}
+                >
+                  {languages.map((lang) => (
+                    <option key={lang.code} value={lang.code}>
+                      {lang.flag} {lang.label}
+                    </option>
+                  ))}
+                </select>
+                <button 
+                  onClick={() => setShowLangModal(true)}
+                  style={{
+                    padding: '8px 12px',
+                    borderRadius: '8px',
+                    border: '1px solid #cbd5e1',
+                    background: '#fff',
+                    cursor: 'pointer',
+                    fontSize: '14px'
+                  }}
+                >
+                  Change
+                </button>
+              </div>
             </div>
 
             <div className="language-control-group">
@@ -141,6 +158,29 @@ const ListeningHub = () => {
             </div>
           </div>
         </section>
+
+        {showLangModal && (
+          <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0,0,0,0.5)',
+            zIndex: 1000,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '20px'
+          }} onClick={() => setShowLangModal(false)}>
+            <div onClick={e => e.stopPropagation()} style={{ background: '#f8fafc', borderRadius: '24px', maxHeight: '90vh', overflowY: 'auto' }}>
+              <LanguageSelector onSelect={(code) => {
+                setTextLanguage(code);
+                setShowLangModal(false);
+              }} />
+            </div>
+          </div>
+        )}
 
         {/* Mode Tabs */}
         <section className="mode-tabs-section">

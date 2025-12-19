@@ -79,6 +79,7 @@ const GuidedLessonsPanel = ({ lessons, listeningLanguage, user, onLessonComplete
               isPlaying={playingLessonId === lesson._id}
               onPlay={() => handleLessonPlay(lesson._id)}
               onComplete={(duration) => handleLessonComplete(lesson._id, duration)}
+              showDetailsLink={false}
             />
           );
         })}

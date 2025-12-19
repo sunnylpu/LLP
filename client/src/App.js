@@ -47,8 +47,6 @@ function App() {
         <Route path="/dashboard/speaking/level/:id" element={<Level1></Level1>}></Route>
 
 
-        <Route path="/listening" element={<LanguageSelector />} />
-
         <Route path="/listening" element={<ListeningHub />} />
 
         <Route path="/listening-practice" element={<ListeningPractice />} />
