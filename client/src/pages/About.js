@@ -208,12 +208,6 @@ const About = () => {
             <h2 className="final-cta-title">Ready to start your language journey?</h2>
             <div className="cta-buttons">
               <button 
-                className="btn-cta-primary" 
-                onClick={() => navigate('/signup')}
-              >
-                Register Now
-              </button>
-              <button 
                 className="btn-cta-secondary" 
                 onClick={() => navigate('/')}
               >
