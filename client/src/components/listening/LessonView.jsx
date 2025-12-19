@@ -35,9 +35,6 @@ const LessonView = () => {
 
   return (
     <div style={{ padding: '24px', display: 'grid', gap: '16px' }}>
-      <Link to="/listening-practice?lang=en-US" style={{ textDecoration: 'none', color: '#2563eb' }}>
-        ← Back to Listening Practice
-      </Link>
       <div
         style={{
           borderRadius: '18px',

@@ -125,7 +125,7 @@ const ListeningHub = () => {
             <div className="language-control-group">
               <label className="language-control-label">
                 <span className="label-icon">🎧</span>
-                Listening Language
+                Accent Language
               </label>
               <select
                 className="language-select"
