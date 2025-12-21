@@ -1,36 +1,18 @@
-import { useEffect, useState } from "react";
-import CompareText from "./comapreText";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 import { Link } from "react-router-dom";
 import Languagecode from "../levels/languageCode";
+import { SPEAKING_CATEGORIES, SPEAKING_LANGUAGES, PRACTICE_LEVELS } from "../config/speakingConfig";
 
 export default function Speaking() {
-    const [text, setText] = useState("");
-    const [matchCount, SetMatchCount] = useState(null);
-    const [listening, setlistening] = useState(false);
     const [language, setLanguage] = useState("");
     const [category, setCategory] = useState(null);
     const [learningLanguage, setLearningLanguage] = useState("");
     const [code, setLanguageCode] = useState("");
-    const [selectedLevel, setSelectedLevel] = useState(null);
 
-    const a = "hello everyone hi how are you";
-    const a1 = a.split(" ");
+    const categories = SPEAKING_CATEGORIES;
 
-    const categories = [
-        { id: "greeting", label: "Greeting", emoji: "👋" },
-        { id: "shopping", label: "Shopping", emoji: "🛍️" },
-        { id: "travel", label: "Travel", emoji: "✈️" },
-        { id: "eating", label: "Eating/Restaurant", emoji: "🍽️" },
-        { id: "daily", label: "Daily Conversation", emoji: "💬" },
-        { id: "emergency", label: "Emergency Phrases", emoji: "🆘" },
-        { id: "work", label: "Work/Office", emoji: "💼" },
-        { id: "numbers", label: "Numbers & Counting", emoji: "🔢" },
-        { id: "directions", label: "Directions", emoji: "🧭" },
-        { id: "weather", label: "Weather", emoji: "☀️" }
-    ];
-
-    const languages = ["Hindi", "English", "German", "Spanish", "French", "Chinese", "Japanese", "Korean", "Italian", "Russian", "Arabic", "Bengali", "Tamil", "Bhojpuri", "Marathi", "Punjabi", "Haryanvi"];
+    const languages = SPEAKING_LANGUAGES;
 
     return (
         <div className="speaking-container">
@@ -171,11 +153,7 @@ export default function Speaking() {
 
                         {language && learningLanguage && category ? (
                             <div className="levels-list">
-                                {[
-                                    { id: 1, label: "Beginner", description: "Basic phrases & vocabulary", color: "level-beginner" },
-                                    { id: 2, label: "Intermediate", description: "Conversational practice", color: "level-intermediate" },
-                                    { id: 3, label: "Advanced", description: "Fluency & complex sentences", color: "level-advanced" }
-                                ].map((level) => (
+                                {PRACTICE_LEVELS.map((level) => (
                                     <Link
                                         key={level.id}
                                         to={`/dashboard/speaking/level/${level.id}`}
