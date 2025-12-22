@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './CourseCard.css';
 
 /**
@@ -26,6 +26,9 @@ const CourseCard = ({
   progress = 0,
   isEnrolled = false 
 }) => {
+  const location = useLocation();
+  const from = location.pathname.includes('/dashboard') ? 'dashboard' : 'courses';
+
   // Don't render draft courses for public
   if (course.status === 'draft') {
     return null;
@@ -73,8 +76,19 @@ const CourseCard = ({
     return `${days} ${days === 1 ? 'day' : 'days'}`;
   };
 
+  // Course is locked if:
+  // 1. Status is coming_soon
+  // 2. User is not enrolled AND no free preview available
   const isLocked = course.status === 'coming_soon' || (!isEnrolled && course.freePreviewLessons === 0);
   const hasFreePreview = course.freePreviewLessons > 0 && !isEnrolled;
+  
+  // Handle locked course click
+  const handleCourseClick = (e) => {
+    if (isLocked && course.status !== 'coming_soon' && !hasFreePreview) {
+      e.preventDefault();
+      alert('🔒 This course is locked. Please contact an administrator to gain access.');
+    }
+  };
 
   return (
     <div className={`course-card ${isLocked ? 'locked' : ''} ${course.isMicroCourse ? 'micro-course' : ''}`}>
@@ -188,9 +202,11 @@ const CourseCard = ({
         ) : (
           <Link 
             to={`/courses/${course._id}`} 
+            state={{ from }}
             className="btn-course btn-primary"
+            onClick={handleCourseClick}
           >
-            {isEnrolled ? 'Continue Learning' : 'Start Course'}
+            {isEnrolled ? 'Continue Learning' : hasFreePreview ? 'Start Free Preview' : 'Start Course'}
           </Link>
         )}
         

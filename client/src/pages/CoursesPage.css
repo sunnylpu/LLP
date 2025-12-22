@@ -10,10 +10,11 @@
 
 /* Hero Section */
 .courses-hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   padding: 4rem 2rem;
-  color: white;
+  color: var(--color-white);
   text-align: center;
+  box-shadow: var(--shadow-glow-primary);
 }
 
 .courses-hero-container {
@@ -38,8 +39,8 @@
 /* Filters Section */
 .filters-section {
   padding: 2rem;
-  background: #f7fafc;
-  border-bottom: 1px solid #e2e8f0;
+  background: var(--bg-dark-secondary);
+  border-bottom: 1px solid var(--glass-border);
 }
 
 .filters-container {
@@ -61,39 +62,40 @@
 
 .filter-label {
   font-size: 0.875rem;
-  font-weight: 600;
-  color: #4a5568;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-300);
 }
 
 .filter-select {
   padding: 0.625rem 1rem;
-  border: 2px solid #e2e8f0;
-  border-radius: 12px;
+  border: 2px solid var(--glass-border);
+  border-radius: var(--radius-md);
   font-size: 0.9375rem;
   font-family: inherit;
-  background: white;
-  color: #1a202c;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  color: var(--color-white);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .filter-select:hover {
-  border-color: #667eea;
+  border-color: var(--color-primary);
 }
 
 .filter-select:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-glow-primary);
 }
 
 .btn-reset-filters {
   padding: 0.625rem 1.5rem;
-  background: white;
-  border: 2px solid #667eea;
-  border-radius: 12px;
-  color: #667eea;
-  font-weight: 600;
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
   font-size: 0.9375rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -101,15 +103,16 @@
 }
 
 .btn-reset-filters:hover {
-  background: #667eea;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-white);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-primary);
 }
 
 /* Courses Sections */
 .courses-sections {
   padding: 3rem 2rem;
-  background: white;
+  background: var(--bg-dark-primary);
 }
 
 .courses-container {
@@ -127,8 +130,8 @@
 
 .section-title {
   font-size: 2rem;
-  font-weight: bold;
-  color: #1a202c;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
   margin-bottom: 2rem;
   display: flex;
   align-items: center;
@@ -138,7 +141,7 @@
 .section-count {
   font-size: 1.25rem;
   font-weight: 500;
-  color: #718096;
+  color: var(--color-gray-300);
 }
 
 .courses-grid {
@@ -157,7 +160,7 @@
 }
 
 .placeholder-text {
-  color: #718096;
+  color: var(--color-gray-300);
   font-size: 1rem;
   line-height: 1.6;
   margin: 0;
@@ -173,7 +176,7 @@
 
 .no-results p {
   font-size: 1.125rem;
-  color: #718096;
+  color: var(--color-gray-300);
   margin-bottom: 1.5rem;
 }
 
@@ -252,4 +255,3 @@
     font-size: 1.5rem;
   }
 }
-

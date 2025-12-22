@@ -10,9 +10,10 @@
 
 /* Hero Section */
 .about-hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   padding: 5rem 2rem;
-  color: white;
+  color: var(--color-white);
+  box-shadow: var(--shadow-glow-primary);
 }
 
 .about-hero-container {
@@ -43,20 +44,21 @@
 }
 
 .btn-start-learning {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  color: white;
+  background: var(--gradient-secondary);
+  color: var(--color-white);
   border: none;
   padding: 1rem 2.5rem;
-  border-radius: 50px;
+  border-radius: var(--radius-full);
   font-size: 1.125rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  box-shadow: var(--shadow-glow-accent);
 }
 
 .btn-start-learning:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 28px rgba(255, 77, 107, 0.5);
 }
 
 .about-hero-icon {
@@ -81,7 +83,7 @@
 .section-title {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #1a202c;
+  color: var(--color-white);
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -89,14 +91,16 @@
 /* Mission Section with Purple Theme */
 .mission-section {
   padding: 80px 20px;
-  background: linear-gradient(135deg, #6a7ce8 0%, #7b5cb0 100%);
+  background: var(--gradient-primary);
+  box-shadow: var(--shadow-glow-primary);
 }
 
 .mission-container {
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
-  background: rgba(255, 255, 255, 0.12); /* soft glass effect */
+  background: rgba(255, 255, 255, 0.12);
+  /* soft glass effect */
   backdrop-filter: blur(10px);
   border-radius: 24px;
   padding: 60px 40px;
@@ -144,11 +148,9 @@
   height: 4px;
   margin: 0 auto 1.8rem auto;
   border-radius: 6px;
-  background: linear-gradient(
-    135deg,
-    #667eea,
-    #764ba2
-  );
+  background: linear-gradient(135deg,
+      #667eea,
+      #764ba2);
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.35);
 }
 
@@ -156,7 +158,7 @@
 /* What Makes Vocal Different */
 .different-section {
   padding: 5rem 2rem;
-  background: #f7fafc;
+  background: var(--bg-dark-secondary);
 }
 
 .different-container {
@@ -172,17 +174,21 @@
 }
 
 .different-card {
-  background: white;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   padding: 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
+  border: 1px solid var(--glass-border);
 }
 
 .different-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-glow-secondary);
+  border-color: var(--color-secondary);
 }
 
 .different-icon {
@@ -193,12 +199,12 @@
 .different-card h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1a202c;
+  color: var(--color-white);
   margin-bottom: 1rem;
 }
 
 .different-card p {
-  color: #718096;
+  color: var(--color-gray-300);
   line-height: 1.7;
   font-size: 1rem;
 }
@@ -206,7 +212,7 @@
 /* How It Works */
 .how-it-works-section {
   padding: 5rem 2rem;
-  background: white;
+  background: var(--bg-dark-primary);
 }
 
 .how-it-works-container {
@@ -251,12 +257,12 @@
 .step-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1a202c;
+  color: var(--color-white);
   margin-bottom: 0.75rem;
 }
 
 .step-description {
-  color: #4a5568;
+  color: var(--color-gray-200);
   line-height: 1.6;
   font-size: 0.9375rem;
 }
@@ -264,7 +270,7 @@
 /* Testimonials */
 .testimonials-section {
   padding: 5rem 2rem;
-  background: #f7fafc;
+  background: var(--bg-dark-secondary);
 }
 
 .testimonials-container {
@@ -302,7 +308,7 @@
 }
 
 .testimonial-text {
-  color: #4a5568;
+  color: var(--color-gray-200);
   line-height: 1.7;
   font-size: 1rem;
   margin-bottom: 1.5rem;
@@ -316,19 +322,19 @@
 }
 
 .testimonial-author strong {
-  color: #1a202c;
+  color: var(--color-white);
   font-size: 1rem;
 }
 
 .testimonial-role {
-  color: #718096;
+  color: var(--color-gray-300);
   font-size: 0.875rem;
 }
 
 /* Who Is Vocal For */
 .audience-section {
   padding: 5rem 2rem;
-  background: white;
+  background: var(--bg-dark-primary);
 }
 
 .audience-container {
@@ -366,12 +372,12 @@
 .audience-card h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1a202c;
+  color: var(--color-white);
   margin-bottom: 0.75rem;
 }
 
 .audience-card p {
-  color: #718096;
+  color: var(--color-gray-300);
   line-height: 1.6;
   font-size: 0.9375rem;
 }
@@ -399,8 +405,9 @@
 /* Final CTA */
 .final-cta-section {
   padding: 5rem 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  box-shadow: var(--shadow-glow-primary);
 }
 
 .final-cta-container {
@@ -564,5 +571,3 @@
     padding: 1.5rem;
   }
 }
-
-

@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CourseCard from '../components/CourseCard';
-import { getCourses } from '../utils/api';
+import { getCourses, getCurrentUser } from '../utils/api';
 import './CoursesPage.css';
 
 const CoursesPage = () => {
   const [courses, setCourses] = useState([]);
   const [filteredCourses, setFilteredCourses] = useState([]);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   
   // Filter states
@@ -17,21 +18,25 @@ const CoursesPage = () => {
   const [selectedStatus, setSelectedStatus] = useState('active');
 
   useEffect(() => {
-    const fetchCourses = async () => {
+    const fetchData = async () => {
       try {
-        const coursesData = await getCourses();
+        const [coursesData, userData] = await Promise.all([
+          getCourses(),
+          getCurrentUser().catch(() => null), // Optional, don't fail if not logged in
+        ]);
         // Filter out draft courses for public view
         const publicCourses = coursesData.filter(course => course.status !== 'draft');
         setCourses(publicCourses);
         setFilteredCourses(publicCourses);
+        setUser(userData);
       } catch (error) {
-        console.error('Error fetching courses:', error);
+        console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchCourses();
+    fetchData();
   }, []);
 
   // Filter courses based on selected filters
@@ -211,9 +216,15 @@ const CoursesPage = () => {
                   <span className="section-count">({getPopularCourses().length})</span>
                 </h2>
                 <div className="courses-grid">
-                  {getPopularCourses().map(course => (
-                    <CourseCard key={course._id} course={course} />
-                  ))}
+                  {getPopularCourses().map(course => {
+                    const isEnrolled = user?.role === 'admin' || 
+                      (user?.enrolledCourses && user.enrolledCourses.some(
+                        (ec) => (ec._id || ec).toString() === course._id.toString()
+                      ));
+                    return (
+                      <CourseCard key={course._id} course={course} isEnrolled={isEnrolled} />
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -226,9 +237,15 @@ const CoursesPage = () => {
                   <span className="section-count">({getNewCourses().length})</span>
                 </h2>
                 <div className="courses-grid">
-                  {getNewCourses().map(course => (
-                    <CourseCard key={course._id} course={course} />
-                  ))}
+                  {getNewCourses().map(course => {
+                    const isEnrolled = user?.role === 'admin' || 
+                      (user?.enrolledCourses && user.enrolledCourses.some(
+                        (ec) => (ec._id || ec).toString() === course._id.toString()
+                      ));
+                    return (
+                      <CourseCard key={course._id} course={course} isEnrolled={isEnrolled} />
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -241,9 +258,15 @@ const CoursesPage = () => {
                   <span className="section-count">({getMicroCourses().length})</span>
                 </h2>
                 <div className="courses-grid">
-                  {getMicroCourses().map(course => (
-                    <CourseCard key={course._id} course={course} />
-                  ))}
+                  {getMicroCourses().map(course => {
+                    const isEnrolled = user?.role === 'admin' || 
+                      (user?.enrolledCourses && user.enrolledCourses.some(
+                        (ec) => (ec._id || ec).toString() === course._id.toString()
+                      ));
+                    return (
+                      <CourseCard key={course._id} course={course} isEnrolled={isEnrolled} />
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -256,9 +279,15 @@ const CoursesPage = () => {
                   <span className="section-count">({getComingSoonCourses().length})</span>
                 </h2>
                 <div className="courses-grid">
-                  {getComingSoonCourses().map(course => (
-                    <CourseCard key={course._id} course={course} />
-                  ))}
+                  {getComingSoonCourses().map(course => {
+                    const isEnrolled = user?.role === 'admin' || 
+                      (user?.enrolledCourses && user.enrolledCourses.some(
+                        (ec) => (ec._id || ec).toString() === course._id.toString()
+                      ));
+                    return (
+                      <CourseCard key={course._id} course={course} isEnrolled={isEnrolled} />
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -294,9 +323,15 @@ const CoursesPage = () => {
                 </h2>
                 {filteredCourses.length > 0 ? (
                   <div className="courses-grid">
-                    {filteredCourses.map(course => (
-                      <CourseCard key={course._id} course={course} />
-                    ))}
+                    {filteredCourses.map(course => {
+                      const isEnrolled = user?.role === 'admin' || 
+                        (user?.enrolledCourses && user.enrolledCourses.some(
+                          (ec) => (ec._id || ec).toString() === course._id.toString()
+                        ));
+                      return (
+                        <CourseCard key={course._id} course={course} isEnrolled={isEnrolled} />
+                      );
+                    })}
                   </div>
                 ) : (
                   <div className="no-results">
