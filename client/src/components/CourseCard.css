@@ -1,21 +1,19 @@
 .course-card {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   position: relative;
 }
 
 .course-card:hover {
   transform: translateY(-8px);
-  box-shadow: var(--shadow-glow-primary);
-  border-color: var(--color-primary);
+  box-shadow: 0 15px 30px rgba(109, 93, 252, 0.15);
+  border-color: rgba(109, 93, 252, 0.3);
 }
 
 .course-card.locked {
@@ -104,15 +102,15 @@
 
 .course-title {
   font-size: 1.2rem;
-  font-weight: var(--font-weight-extrabold);
-  color: var(--color-white);
+  font-weight: 800;
+  color: #2d3748;
   margin: 0;
   line-height: 1.3;
 }
 
 .course-description {
   font-size: 0.9rem;
-  color: var(--color-gray-300);
+  color: #718096;
   line-height: 1.6;
   margin: 0;
   display: -webkit-box;
@@ -127,8 +125,8 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.85rem;
-  color: var(--color-gray-200);
-  font-weight: var(--font-weight-semibold);
+  color: #4a5568;
+  font-weight: 600;
 }
 
 /* Skill Tags */
@@ -154,8 +152,9 @@
   flex-wrap: wrap;
   gap: 1rem;
   font-size: 0.85rem;
-  color: var(--color-gray-300);
+  color: #718096;
   margin-top: auto;
+  /* Push to bottom of content area */
   padding-top: 0.5rem;
 }
 
@@ -186,10 +185,9 @@
 
 .progress-fill {
   height: 100%;
-  background: var(--gradient-primary);
+  background: linear-gradient(90deg, #6d5dfc 0%, #f093fb 100%);
   border-radius: 3px;
   transition: width 0.5s ease-out;
-  box-shadow: 0 0 8px rgba(142, 50, 233, 0.5);
 }
 
 .progress-text {
@@ -249,14 +247,14 @@
 }
 
 .btn-course.btn-primary {
-  background: var(--gradient-primary);
-  color: var(--color-white);
-  box-shadow: var(--shadow-glow-primary);
+  background: linear-gradient(135deg, #6d5dfc 0%, #f093fb 100%);
+  color: white;
+  box-shadow: 0 4px 6px rgba(109, 93, 252, 0.2);
 }
 
 .btn-course.btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glow-primary-hover);
+  box-shadow: 0 8px 15px rgba(109, 93, 252, 0.3);
 }
 
 .btn-course.btn-coming-soon,
@@ -268,9 +266,9 @@
 
 .enrollment-count {
   font-size: 0.8rem;
-  color: var(--color-gray-300);
+  color: #718096;
   white-space: nowrap;
-  font-weight: var(--font-weight-medium);
+  font-weight: 500;
 }
 
 /* Responsive Design */

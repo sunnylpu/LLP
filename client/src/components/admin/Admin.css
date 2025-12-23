@@ -1,19 +1,16 @@
 /* Admin shared styles */
 
 .admin-card {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border-radius: var(--radius-lg);
+  background: #ffffff;
+  border-radius: 14px;
   padding: 18px;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid var(--glass-border);
 }
 
 .admin-card:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glow-primary);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
 .admin-table {
@@ -25,16 +22,15 @@
 .admin-table th,
 .admin-table td {
   padding: 12px 14px;
-  border-bottom: 1px solid var(--glass-border);
+  border-bottom: 1px solid #e5e7eb;
   text-align: left;
   font-size: 14px;
-  color: var(--color-white) !important;
 }
 
 .admin-table th {
-  background: var(--glass-bg-light);
-  color: var(--color-secondary) !important;
-  font-weight: var(--font-weight-semibold);
+  background: #f5f3ff;
+  color: #5b21b6;
+  font-weight: 600;
 }
 
 .admin-table tr:hover {

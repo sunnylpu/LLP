@@ -1,6 +1,6 @@
 .course-detail-page {
   min-height: 100vh;
-  background: var(--bg-dark-primary);
+  background: #f5f7fa;
 }
 
 .course-detail-container {
@@ -23,17 +23,14 @@
 }
 
 .course-header {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  background: white;
   padding: 2rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
   display: flex;
   gap: 2rem;
   align-items: flex-start;
-  border: 1px solid var(--glass-border);
 }
 
 .course-icon {
@@ -47,8 +44,8 @@
 
 .course-title {
   font-size: 2.5rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-white);
+  font-weight: bold;
+  color: #1a202c;
   margin-bottom: 1rem;
 }
 
@@ -67,11 +64,11 @@
   border-radius: 20px;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--color-gray-200);
+  color: #4a5568;
 }
 
 .course-description {
-  color: var(--color-gray-300);
+  color: #718096;
   font-size: 1.125rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
@@ -86,7 +83,7 @@
 .learning-outcomes h3 {
   font-size: 1.25rem;
   font-weight: bold;
-  color: var(--color-white);
+  color: #1a202c;
   margin-bottom: 1rem;
 }
 
@@ -97,7 +94,7 @@
 
 .learning-outcomes li {
   padding: 0.5rem 0;
-  color: var(--color-gray-200);
+  color: #4a5568;
   position: relative;
   padding-left: 1.5rem;
 }
@@ -117,22 +114,19 @@
 }
 
 .lessons-sidebar {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  background: white;
   padding: 1.5rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: fit-content;
   position: sticky;
   top: 2rem;
-  border: 1px solid var(--glass-border);
 }
 
 .lessons-title {
   font-size: 1.5rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-white);
+  font-weight: bold;
+  color: #1a202c;
   margin-bottom: 1.5rem;
 }
 
@@ -185,25 +179,22 @@
 
 .lesson-title {
   font-size: 1rem;
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-white);
+  font-weight: 600;
+  color: #1a202c;
   margin-bottom: 0.25rem;
 }
 
 .lesson-type {
   font-size: 0.875rem;
-  color: var(--color-gray-300);
+  color: #718096;
 }
 
 .lesson-content-area {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  background: white;
   padding: 2rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   min-height: 500px;
-  border: 1px solid var(--glass-border);
 }
 
 .lesson-detail {
@@ -212,13 +203,13 @@
 
 .lesson-header h2 {
   font-size: 2rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-white);
+  font-weight: bold;
+  color: #1a202c;
   margin-bottom: 0.5rem;
 }
 
 .lesson-description {
-  color: var(--color-gray-300);
+  color: #718096;
   font-size: 1.125rem;
   margin-bottom: 2rem;
 }
@@ -232,8 +223,8 @@
 
 .lesson-outcomes h3 {
   font-size: 1.25rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-white);
+  font-weight: bold;
+  color: #1a202c;
   margin-bottom: 1rem;
 }
 
@@ -244,7 +235,7 @@
 
 .lesson-outcomes li {
   padding: 0.5rem 0;
-  color: var(--color-gray-200);
+  color: #4a5568;
   position: relative;
   padding-left: 1.5rem;
 }
@@ -276,13 +267,13 @@
 
 .section-title {
   font-size: 1.5rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-white);
+  font-weight: bold;
+  color: #1a202c;
   margin-bottom: 1rem;
 }
 
 .section-content {
-  color: var(--color-gray-200);
+  color: #4a5568;
   font-size: 1rem;
   line-height: 1.8;
   margin-bottom: 1.5rem;
@@ -295,8 +286,8 @@
 
 .section-examples h4 {
   font-size: 1.125rem;
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-white);
+  font-weight: 600;
+  color: #1a202c;
   margin-bottom: 1rem;
 }
 
@@ -310,8 +301,8 @@
 
 .example-text {
   font-size: 1rem;
-  color: var(--color-gray-800);
-  font-weight: var(--font-weight-medium);
+  color: #1a202c;
+  font-weight: 500;
   margin-bottom: 0.5rem;
   white-space: pre-line;
 }
@@ -330,8 +321,8 @@
 
 .practice-section h3 {
   font-size: 1.5rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-white);
+  font-weight: bold;
+  color: #1a202c;
   margin-bottom: 1.5rem;
 }
 
@@ -344,7 +335,7 @@
 
 .exercise-question {
   font-size: 1.125rem;
-  color: var(--color-gray-800);
+  color: #1a202c;
   margin-bottom: 1rem;
   line-height: 1.6;
 }
@@ -355,11 +346,11 @@
 
 .option-item {
   padding: 0.75rem;
-  background: var(--glass-bg-light);
+  background: white;
   border-radius: 6px;
   margin-bottom: 0.5rem;
-  border: 1px solid var(--glass-border);
-  color: var(--color-gray-200);
+  border: 1px solid #e2e8f0;
+  color: #4a5568;
 }
 
 .exercise-explanation {
@@ -380,7 +371,7 @@
 .no-lesson-selected {
   text-align: center;
   padding: 4rem 2rem;
-  color: var(--color-gray-300);
+  color: #718096;
 }
 
 .error {
@@ -403,12 +394,12 @@
 }
 
 .action-btn {
-  background: var(--glass-bg);
-  color: var(--color-white);
-  border: 1px solid var(--glass-border);
+  background: #e2e8f0;
+  color: #1a202c;
+  border: none;
   padding: 0.4rem 0.75rem;
   border-radius: 8px;
-  font-weight: var(--font-weight-semibold);
+  font-weight: 600;
   font-size: 0.85rem;
   cursor: pointer;
   transition: background 0.2s, transform 0.1s;
@@ -451,24 +442,24 @@
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 1.5rem;
-  color: var(--color-white);
+  color: #1a202c;
 }
 
 .modal-text {
-  background: var(--glass-bg-light);
+  background: #f7fafc;
   padding: 0.75rem 1rem;
   border-radius: 8px;
   margin-bottom: 0.75rem;
-  color: var(--color-white);
+  color: #1a202c;
   white-space: pre-line;
 }
 
 .modal-context {
-  background: var(--glass-bg-light);
+  background: #f7fafc;
   padding: 0.75rem 1rem;
   border-radius: 8px;
   margin-bottom: 0.75rem;
-  color: var(--color-white);
+  color: #1a202c;
   max-height: 140px;
   overflow-y: auto;
   white-space: pre-line;
@@ -499,19 +490,18 @@
 }
 
 .modal-label {
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-white);
+  font-weight: 600;
+  color: #1a202c;
   margin: 0.5rem 0;
 }
 
 .modal-textarea {
   width: 100%;
-  border: 1px solid var(--glass-border);
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
   padding: 0.75rem;
   font-size: 1rem;
-  color: var(--color-white);
-  background: var(--glass-bg);
+  color: #1a202c;
   resize: vertical;
 }
 
