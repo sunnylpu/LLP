@@ -35,6 +35,21 @@ const Login = ({ isLogin = true }) => {
           callback: handleGoogleSignIn,
           auto_select: false,
         });
+
+        // Render the Google button as a fallback
+        const buttonDiv = document.getElementById('google-signin-button');
+        if (buttonDiv) {
+          window.google.accounts.id.renderButton(
+            buttonDiv,
+            {
+              theme: 'outline',
+              size: 'large',
+              text: 'continue_with',
+              width: 300,
+              logo_alignment: 'left'
+            }
+          );
+        }
       }
     };
     document.body.appendChild(script);
@@ -68,41 +83,6 @@ const Login = ({ isLogin = true }) => {
       setError(err.response?.data?.message || err.message || 'Google sign in failed. Please try again.');
     } finally {
       setGoogleLoading(false);
-    }
-  };
-
-  const handleGoogleClick = () => {
-    const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-
-    if (!clientId) {
-      setError('Google Client ID is not configured. Please contact support.');
-      return;
-    }
-
-    if (!window.google || !window.google.accounts) {
-      setError('Google sign in is loading. Please wait a moment and try again.');
-      return;
-    }
-
-    try {
-      // Trigger Google One Tap prompt
-      window.google.accounts.id.prompt((notification) => {
-        if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-          // Fallback: show account chooser
-          window.google.accounts.id.renderButton(
-            document.getElementById('google-button-fallback'),
-            {
-              theme: 'outline',
-              size: 'large',
-              text: 'continue_with',
-              width: 300
-            }
-          );
-        }
-      });
-    } catch (error) {
-      console.error('Error triggering Google sign-in:', error);
-      setError('Failed to start Google sign-in. Please try again.');
     }
   };
 
@@ -204,18 +184,15 @@ const Login = ({ isLogin = true }) => {
             {loading ? 'Loading...' : 'Continue'}
           </button>
 
-          <button
-            type="button"
-            className="btn-google"
-            onClick={handleGoogleClick}
-            disabled={googleLoading || loading}
-          >
-            <span className="google-icon">G</span>
-            {googleLoading ? 'Signing in...' : 'Continue with Google'}
-          </button>
-
-          {/* Fallback container for Google-rendered button */}
-          <div id="google-button-fallback" style={{ marginTop: '0.5rem', display: 'flex', justifyContent: 'center' }}></div>
+          {/* Google Sign-In Button */}
+          <div
+            id="google-signin-button"
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              marginTop: '1rem'
+            }}
+          ></div>
         </form>
 
         <p className="signup-link">
